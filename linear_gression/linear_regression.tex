@@ -3,6 +3,8 @@
 % 线性回归
 \documentclass[UTF8]{ctexart}
 \usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
 \geometry{a4paper,centering,scale=0.8}
 \usepackage{float}
 \usepackage[format=hang,font=small,textfont=it]{caption}
@@ -40,6 +42,25 @@
 	
 	\section{多元线性回归}
 	多元线性回归是指回归变量个数大于等于2的线性回归.
+	
+	回归平方和服从卡方分布的证明
+	
+	\begin{equation}
+		\begin{aligned}
+			SSR &= \sum_{i=1}^{n} {(\hat{y_{i}} - \overline{y})^2} \\
+			    &= [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}]^T [\boldsymbol{\hat{y}} - \boldsymbol{1} \boldsymbol{\overline{\boldsymbol{y}}}] \\
+			    &= [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}] \\
+			    &= \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T ]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y} \\
+		\end{aligned}
+	\end{equation}
+
+    上式中，$ \boldsymbol{1} \in \mathbb{R}^{n} $，其元素均为1. 响应变量均值可以表示为 $ \overline{y} = (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y} $.
+    
+    接下来证明$ [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}] $ 是实对称矩阵且是幂等的.
+    
+    \begin{equation}
+    	[\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}]
+    \end{equation}
 	
 	
 	
