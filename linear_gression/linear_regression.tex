@@ -48,19 +48,147 @@
 	\begin{equation}
 		\begin{aligned}
 			SSR &= \sum_{i=1}^{n} {(\hat{y_{i}} - \overline{y})^2} \\
-			    &= [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}]^T [\boldsymbol{\hat{y}} - \boldsymbol{1} \boldsymbol{\overline{\boldsymbol{y}}}] \\
+			    &= [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}]^T [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}] \\
 			    &= [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}] \\
 			    &= \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T ]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y} \\
 		\end{aligned}
 	\end{equation}
 
-    上式中，$ \boldsymbol{1} \in \mathbb{R}^{n} $，其元素均为1. 响应变量均值可以表示为 $ \overline{y} = (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y} $.
+    上式中，$ \boldsymbol{1} \in \mathbb{R}^{n} $，是一个元素均为1的列向量. 响应变量均值可以表示为 $ \overline{y} = (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y} $.
     
-    接下来证明$ [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}] $ 是实对称矩阵且是幂等的.
+    接下来证明 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T $ 是对称矩阵.
     
     \begin{equation}
-    	[\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}]
+    	\begin{aligned}
+    		[\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T]^T 
+    		&= [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T]^T - [\boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T]^T \\
+    		&= \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T
+    	\end{aligned}
     \end{equation}
+    得证.
+    
+    证明 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T $ 是幂等的.
+    
+    如果说矩阵 $ A $ 是幂等的，则有 $ \boldsymbol{A} = \boldsymbol{A} \boldsymbol{A} = \dots = \boldsymbol{A}^n $
+    
+    证明 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T $ 的幂等性，需要先证明如下结论.
+    
+    
+    \begin{equation}
+        \begin{aligned}
+            \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} &= \boldsymbol{1} \\
+            \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T &= \boldsymbol{1}^T
+        \end{aligned}
+    \end{equation}
+
+    $ \boldsymbol{X} \in \mathbb{R}^{n \times (k + 1)} $ 可以分解为 $ \boldsymbol{X} = [\boldsymbol{1} \  \boldsymbol{X}_R] $ ，其中 $ \boldsymbol{X}_{R} \in \mathbb{R}^{n \times k} $ ，则有 
+   
+    \begin{equation}
+        \begin{aligned}
+            \boldsymbol{X}^T \boldsymbol{X} 
+            = \begin{bmatrix}
+                \boldsymbol{1}^T \\
+                \boldsymbol{X}_R^T
+            \end{bmatrix} \begin{bmatrix}
+                \boldsymbol{1} \  \boldsymbol{X}_R
+            \end{bmatrix} = \begin{bmatrix}
+                \boldsymbol{1}^T \boldsymbol{1} & \boldsymbol{1}^T \boldsymbol{X}_R \\
+                \boldsymbol{X}_R^T \boldsymbol{1} & \boldsymbol{X}_R^T \boldsymbol{X}_R
+            \end{bmatrix}
+        \end{aligned}
+    \end{equation}
+
+    显然，$ \boldsymbol{X}^T \boldsymbol{X} $ 是对称矩阵，其逆矩阵也是对称矩阵，假设其为
+    
+    \begin{equation}
+    	(\boldsymbol{X}^T \boldsymbol{X})^{-1} = \begin{bmatrix}
+    		a & \boldsymbol{b}^T \\
+    		\boldsymbol{b} & \boldsymbol{C}
+    	\end{bmatrix}
+    \end{equation}
+
+    其中，$ a \in \mathbb{R} $ 是个标量，$ \boldsymbol{b} \in \mathbb{R}^k $ ， $ \boldsymbol{C} \in \mathbb{R}^{k \times k} $ ，则有
+    
+    \begin{equation}
+    	\begin{aligned}
+    		\boldsymbol{X}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} & = \begin{bmatrix}
+    			\boldsymbol{1}^T \boldsymbol{1} & \boldsymbol{1}^T \boldsymbol{X}_R \\
+    			\boldsymbol{X}_R^T \boldsymbol{1} & \boldsymbol{X}_R^T \boldsymbol{X}_R
+    		\end{bmatrix} \begin{bmatrix}
+    		    a & \boldsymbol{b}^T \\
+    		    \boldsymbol{b} & \boldsymbol{C}
+    		\end{bmatrix} \\
+    	    & = \begin{bmatrix}
+    	    	\boldsymbol{1}^T \boldsymbol{1} a + \boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{b} & \boldsymbol{1}^T \boldsymbol{1} \boldsymbol{b}^T + \boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{C} \\
+    	    	\boldsymbol{X}_R^T \boldsymbol{1} a + \boldsymbol{X}_R^T \boldsymbol{X}_R \boldsymbol{b} & \boldsymbol{X}_R^T \boldsymbol{1} \boldsymbol{b}^T + \boldsymbol{X}_R^T \boldsymbol{X}_R \boldsymbol{C}
+    	    \end{bmatrix} \\
+            & = \begin{bmatrix}
+            	1 & \boldsymbol{0}^T \\
+            	\boldsymbol{0} & \boldsymbol{I}
+            \end{bmatrix}
+    	\end{aligned}
+    \end{equation}
+
+    上式中 $ \boldsymbol{0} \in \mathbb{R}^n $ ， $ \boldsymbol{I} \in \mathbb{R}^{k \times k} $ 是单位矩阵. 观察最后一个等号前后矩阵的第一行，显然有
+    
+    \begin{equation}
+    	\begin{aligned}
+    		\boldsymbol{1}^T \boldsymbol{1} a + \boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{b} & = 1 \\
+    		\boldsymbol{1}^T \boldsymbol{1} \boldsymbol{b}^T + \boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{C} & = \boldsymbol{0}^T
+    	\end{aligned}
+    \end{equation}
+
+    再看 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T $ ，如下
+    
+    \begin{equation}
+    	\begin{aligned}
+    		\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} & = \begin{bmatrix}
+    			\boldsymbol{1} \  \boldsymbol{X}_R 
+    		\end{bmatrix} \begin{bmatrix}
+    		    a & \boldsymbol{b}^T \\
+    		    \boldsymbol{b} & \boldsymbol{C}
+    	    \end{bmatrix} \begin{bmatrix}
+    	        \boldsymbol{1}^T \\
+    	        \boldsymbol{X}_R^T
+            \end{bmatrix} \boldsymbol{1} \\
+            & = \begin{bmatrix}
+                a \boldsymbol{1} + \boldsymbol{X}_R \boldsymbol{b} &  \boldsymbol{1} \boldsymbol{b}^T + \boldsymbol{X}_R \boldsymbol{C}
+            \end{bmatrix} \begin{bmatrix}
+                \boldsymbol{1}^T \\
+                \boldsymbol{X}_R^T
+            \end{bmatrix} \boldsymbol{1} \\
+            & = \begin{bmatrix}
+            	a \boldsymbol{1} \boldsymbol{1}^T + \boldsymbol{X}_R \boldsymbol{b} \boldsymbol{1}^T + \boldsymbol{1} \boldsymbol{b}^T \boldsymbol{X}_R^T + \boldsymbol{X}_R \boldsymbol{C} \boldsymbol{X}_R^T
+            \end{bmatrix} \boldsymbol{1} \\
+            & = a \boldsymbol{1} \boldsymbol{1}^T \boldsymbol{1} + \boldsymbol{X}_R \boldsymbol{b} \boldsymbol{1}^T \boldsymbol{1} + \boldsymbol{1} \boldsymbol{b}^T \boldsymbol{X}_R^T \boldsymbol{1} + \boldsymbol{X}_R \boldsymbol{C} \boldsymbol{X}_R^T \boldsymbol{1}
+    	\end{aligned}
+    \end{equation}
+    
+    观察上式最后一个等号的右边，第一项中 $ \boldsymbol{1}^T \boldsymbol{1} \in \mathbb{R} $ ，第三项中 $ \boldsymbol{b}^T \boldsymbol{X}_R^T \boldsymbol{1} $ 都是标量，标量的转置是其本身，再结合(7)式，第一项和第三项的和
+    
+    \begin{equation}
+    	\begin{aligned}
+    		a \boldsymbol{1} \boldsymbol{1}^T \boldsymbol{1} + \boldsymbol{1} \boldsymbol{b}^T \boldsymbol{X}_R^T \boldsymbol{1} & = a (\boldsymbol{1}^T \boldsymbol{1}) \boldsymbol{1} + (\boldsymbol{b}^T \boldsymbol{X}_R^T \boldsymbol{1}) \boldsymbol{1} \\
+    		& = a (\boldsymbol{1}^T \boldsymbol{1}) \boldsymbol{1} + (\boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{b}) \boldsymbol{1} \\
+    		& = [a (\boldsymbol{1}^T \boldsymbol{1}) + (\boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{b})] \boldsymbol{1} \\
+    		& = \boldsymbol{1}
+    	\end{aligned}
+    \end{equation}
+
+    结合(7)式，再看第二项和第四项的和
+    
+    \begin{equation}
+    	\begin{aligned}
+    		\boldsymbol{X}_R \boldsymbol{b} \boldsymbol{1}^T \boldsymbol{1} + \boldsymbol{X}_R \boldsymbol{C} \boldsymbol{X}_R^T \boldsymbol{1} & = [[\boldsymbol{X}_R \boldsymbol{b} \boldsymbol{1}^T \boldsymbol{1} + \boldsymbol{X}_R \boldsymbol{C} \boldsymbol{X}_R^T \boldsymbol{1}]^T]^T \\
+    		& = [\boldsymbol{1}^T \boldsymbol{1} \boldsymbol{b}^T \boldsymbol{X}_R^T + \boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{C}^T \boldsymbol{X}_R^T]^T \\
+    		& = [(\boldsymbol{1}^T \boldsymbol{1} \boldsymbol{b}^T + \boldsymbol{1}^T \boldsymbol{X}_R \boldsymbol{C}^T) \boldsymbol{X}_R^T]^T \\
+    		& =  [\boldsymbol{0}^T \boldsymbol{X}_R^T]^T \\
+    		& = \boldsymbol{0}
+       	\end{aligned}
+    \end{equation}
+
+    回看(8)式，可得 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} = \boldsymbol{1} $ ，同理可得 $ \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T = \boldsymbol{1}^T $ .
+    
 	
 	
 	
