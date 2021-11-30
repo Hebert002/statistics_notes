@@ -26,7 +26,7 @@
 	\maketitle
 	
 	\begin{abstract}
-		尽量通俗易懂，且不学院气质的线性回归笔记。
+		尽量通俗易懂，基于理工科本科数学水平的线性回归笔记.
 	\end{abstract}
 	
 	\tableofcontents
@@ -47,10 +47,10 @@
 	
 	\begin{equation}
 		\begin{aligned}
-			SSR &= \sum_{i=1}^{n} {(\hat{y_{i}} - \overline{y})^2} \\
-			    &= [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}]^T [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}] \\
-			    &= [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}] \\
-			    &= \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T ]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y} \\
+			SSR & = \sum_{i=1}^{n} {(\hat{y_{i}} - \overline{y})^2} \\
+			    & = [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}]^T [\boldsymbol{\hat{y}} - \boldsymbol{1} \overline{y}] \\
+			    & = [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{y}] \\
+			    & = \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T ]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y} \\
 		\end{aligned}
 	\end{equation}
 
@@ -61,8 +61,8 @@
     \begin{equation}
     	\begin{aligned}
     		[\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T]^T 
-    		&= [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T]^T - [\boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T]^T \\
-    		&= \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T
+    		& = [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T]^T - [\boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T]^T \\
+    		& = \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1}  \boldsymbol{1}^T
     	\end{aligned}
     \end{equation}
     得证.
@@ -76,8 +76,8 @@
     
     \begin{equation}
         \begin{aligned}
-            \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} &= \boldsymbol{1} \\
-            \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T &= \boldsymbol{1}^T
+            \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} & = \boldsymbol{1} \\
+            \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T & = \boldsymbol{1}^T
         \end{aligned}
     \end{equation}
 
@@ -129,7 +129,7 @@
     	\end{aligned}
     \end{equation}
 
-    上式中 $ \boldsymbol{0} \in \mathbb{R}^n $ ， $ \boldsymbol{I} \in \mathbb{R}^{k \times k} $ 是单位矩阵. 观察最后一个等号前后矩阵的第一行，显然有
+    上式中 $ \boldsymbol{0} \in \mathbb{R}^k $ ， $ \boldsymbol{I} \in \mathbb{R}^{k \times k} $ 是单位矩阵. 观察最后一个等号前后矩阵的第一行，显然有
     
     \begin{equation}
     	\begin{aligned}
@@ -187,7 +187,139 @@
        	\end{aligned}
     \end{equation}
 
-    回看(8)式，可得 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} = \boldsymbol{1} $ ，同理可得 $ \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T = \boldsymbol{1}^T $ .
+    回看(8)式，可得 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} = \boldsymbol{1} $ ，同理可得 $ \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T = \boldsymbol{1}^T $ . 推导过程中，需要注意矩阵和向量的维数.
+    
+    接下来就有
+    
+    \begin{equation}
+    	\begin{aligned}
+    		& \quad \  [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T]^2 \\
+    		& = [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \\
+    		& = \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \\
+    		& \quad - \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T + \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \\
+    		& = \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T - \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T + \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T \\
+    		& = \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T
+    	\end{aligned}
+    \end{equation}
+    
+    结合(2)式的结论，(1)式可继续推导为
+    
+    \begin{equation}
+    	\begin{aligned}
+    		SSR & = \sum_{i=1}^{n} {(\hat{y_{i}} - \overline{y})^2} \\
+    		& = \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T ]^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T \boldsymbol{y} - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y} \\
+    		& = \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T ] [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y} \\
+    		& = \boldsymbol{y}^T [\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \boldsymbol{y}
+    	\end{aligned}
+    \end{equation}
+
+    至此，上面已经证明了 $ \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T $ 是一个幂等的实对称矩阵. 接下来，将其简单表示为 $ \boldsymbol{Q} $ ， 则有
+    
+    \begin{equation}
+    	SSR = \boldsymbol{y}^T \boldsymbol{Q} \boldsymbol{y}
+    \end{equation}
+    
+
+    因为 $ \boldsymbol{Q} \in \mathbb{R}^{n \times n} $ 是实对称矩阵，所以其可以正交对角化，即存在正交矩阵$ \boldsymbol{P} \in \mathbb{R}^{n \times n} $ ，使得
+    
+    \begin{equation}
+        \boldsymbol{P}^{-1} \boldsymbol{Q} \boldsymbol{P} = \boldsymbol{P}^T \boldsymbol{Q} \boldsymbol{P} = \boldsymbol{\varLambda} 
+    \end{equation}
+
+    其中，$ \boldsymbol{\varLambda} \in \mathbb{R}^{n \times n} $ 是实对角矩阵，对角线上的元素是 $ \boldsymbol{Q} $ 的 $ n $ 个特征值. 所以有
+    
+    \begin{equation}
+    	\begin{aligned}
+    		SSR & = \boldsymbol{y}^T \boldsymbol{Q} \boldsymbol{y} \\
+    		& =  \boldsymbol{y}^T \boldsymbol{P} \boldsymbol{\varLambda} \boldsymbol{P}^T \boldsymbol{y} \\
+    		& = (\boldsymbol{P}^T \boldsymbol{y})^T \boldsymbol{\varLambda} (\boldsymbol{P}^T \boldsymbol{y})
+    	\end{aligned}
+    \end{equation}
+
+    又因为 $ \boldsymbol{Q} $ 是等幂矩阵，所以有
+    
+    \begin{equation}
+    	\begin{aligned}
+    	    \boldsymbol{\varLambda}^2 & = \boldsymbol{P}^T \boldsymbol{Q} \boldsymbol{P} \boldsymbol{P}^T \boldsymbol{Q} \boldsymbol{P} \\
+    	    & = \boldsymbol{P}^T \boldsymbol{Q}^2 \boldsymbol{P} \\
+    	    & = \boldsymbol{P}^T \boldsymbol{Q} \boldsymbol{P} \\
+    	    & = \boldsymbol{\varLambda}
+    	\end{aligned}
+    \end{equation}
+
+    可见 $ \boldsymbol{\varLambda} $ 也是等幂的. 如果一个对角矩阵是等幂的，其对角元素要么是1，要么是0（可自行证明）.
+    
+    用$ p_{ij} $ 表示 $ \boldsymbol{P} $ 第 $ i $ 行第 $ j $ 列的元素. $ \boldsymbol{P}^T \boldsymbol{y} \in \mathbb{R}^n $ 的第i个元素可以表示为 $ \sum_{j=1}^{n}{p_{ji} y_{j}} $ ，带入(15)式，可得
+    
+    \begin{equation}
+    	\begin{aligned}
+    		SSR & = (\boldsymbol{P}^T \boldsymbol{y})^T \boldsymbol{\varLambda} (\boldsymbol{P}^T \boldsymbol{y}) \\
+    		& = \begin{bmatrix}
+    		    \sum_{j=1}^{n}{p_{j1} y_{j}} \ \sum_{j=1}^{n}{p_{j2} y_{j}} \dots \sum_{j=1}^{n}{p_{jn} y_{j}}
+    		\end{bmatrix} \begin{bmatrix}
+    		    \lambda_1 & & & \\
+    		    & \lambda_2 & & \\
+    		    & & \ddots & \\
+    		    & & & \lambda_n
+    	    \end{bmatrix} \begin{bmatrix}
+    	        \sum_{j=1}^{n}{p_{j1} y_{j}} \\
+    	        \sum_{j=1}^{n}{p_{j2} y_{j}} \\
+    	        \vdots \\
+    	        \sum_{j=1}^{n}{p_{jn} y_{j}}
+            \end{bmatrix} \\
+            & = \sum_{i=1}^{n}{\lambda_i (\sum_{j=1}^{n}{p_{ji} y_{j}})^2} \\
+            & = \sum_{i=1}^{m}{(\sum_{j=1}^{n}{p_{ji} y_{j}})^2}
+        \end{aligned}
+    \end{equation}
+
+    上式中， $ m $ 是对角矩阵 $ \boldsymbol{\varLambda} $ 对角元素为1的个数.
+    
+    
+    当 $ \boldsymbol{\beta} = \boldsymbol{0}$ 时，$ \boldsymbol{y} = \boldsymbol{X} \boldsymbol{\beta} + \boldsymbol{\epsilon} = \boldsymbol{\epsilon} $ ，则有
+    
+    \begin{equation}
+    	\begin{aligned}
+    		SSR & = \sum_{i=1}^{m}{(\sum_{j=1}^{n}{p_{ji} y_{j}})^2}
+    		& = \sum_{i=1}^{m}{(\sum_{j=1}^{n}{p_{ji} \epsilon_{j}})^2}
+    	\end{aligned}
+    \end{equation}
+
+    则有
+    
+    \begin{equation}
+        \begin{aligned}
+        	& \epsilon_{j} \sim \mathcal{N}(0, \sigma^2) \\
+        	\Downarrow & \\
+        	& p_{ji} \epsilon_{j} \sim \mathcal{N}(0, p_{ji}^2 \sigma^2) \\
+        	\Downarrow & \\
+        	& \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} \sim \mathcal{N}(0, \sum_{i=1}^{n}p_{ji}^2 \sigma^2) \\
+        	\Downarrow & \\
+        	& \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} \sim \mathcal{N}(0, \sigma^2 \sum_{i=1}^{n}p_{ji}^2) \\
+        	\Downarrow & \quad (\sum_{i=1}^{n}p_{ji}^2 = 1) \\
+        	& \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} \sim \mathcal{N}(0, \sigma^2) \\
+        	\Downarrow & \\
+        	& \frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} \sim \mathcal{N}(0, 1) \\
+        	\Downarrow & \\
+        	& \sum_{i=1}^{m}{(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}})^2} \sim \mathcal{\chi}^2(m) \\
+        	\Downarrow & \\
+        	& \frac{1}{\sigma^2} SSR \sim \mathcal{\chi}^2(m)
+        \end{aligned}
+    \end{equation}
+
+
+    
+    
+    
+
+    
+    
+    
+    \section{附录}
+    定理一
+    
+    实对称矩阵 $ \boldsymbol{A} \in \mathbb{R}^{n \times n} $ 必定正交相似于实对角矩阵 $ \boldsymbol{\varLambda} $ ，即存在正交矩阵 $ \boldsymbol{P} $ ，使得 $ \boldsymbol{P}^{-1} \boldsymbol{A} \boldsymbol{P} = \boldsymbol{P}^T \boldsymbol{A} \boldsymbol{P} = \boldsymbol{\varLambda} $ ，其中 $ \boldsymbol{\varLambda} $ 对角线上的元素是 $ \boldsymbol{A} $ 的 $ n $ 个特征值.
+    
+    证明可请参考线性代数的教材.
     
 	
 	
