@@ -306,20 +306,34 @@
         \end{aligned}
     \end{equation}
 
-    上面倒数第二个推导 $ (\Downarrow) $ 需要证明 $ \frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} $ 和 $ \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}} $ 之间的独立性，如下
+    上面倒数第二个推导 $ (\Downarrow) $ 需要证明 $ \frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} $ 和 $ \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}} \ (i \ne l)$ 之间的独立性，如下
     
     \begin{equation}
     	\begin{aligned}
     	    Cov(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) & = \frac{1}{\sigma^2} Cov(\sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) \\
     	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} Cov(p_{ji} \epsilon_{j}, p_{hl} \epsilon_{h}) \\
-    	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} Cov(\epsilon_{j}, \epsilon_{h}) \\
-    	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} \cdot 0 \\
-    	    & = 0
+    	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} Cov(\epsilon_{j}, \epsilon_{h})
     	\end{aligned}
     \end{equation}
 
-    上式中，因为 $ \epsilon_i $ 之间相互独立，所以 $ Cov(\epsilon_i, \epsilon_j) = 0 $ . 协方差为0的两个正态分布，相互独立. 独立性得证. 
+    上式中， $ j \ne h $ 时， $ \epsilon_j $ 和 $ \epsilon_h $ 相互独立，所以 $ Cov(\epsilon_j, \epsilon_h) = 0 $ ；$ j = h $ 时， $ Cov(\epsilon_j, \epsilon_j) = Var(\epsilon_j) = \sigma^2 $ . 此时有
+    
+    \begin{equation}
+    	\begin{aligned}
+    		Cov(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} Cov(\epsilon_{j}, \epsilon_{h}) \\
+    		& = \frac{1}{\sigma^2} \sum_{j=1}^{n} p_{ji} p_{jl} Cov(\epsilon_{j}, \epsilon_{j}) \\
+    		& = \sum_{j=1}^{n} p_{ji} p_{jl}
+    	\end{aligned}
+    \end{equation}
 
+    继续推导，观察上式最后一个等号的后面，它是正交矩阵 $ \boldsymbol{\varLambda} $ 第 $ i $ 列和第 $ l $ 列的点积. 正交矩阵任意两列的点积为0（可自行证明）. 所以
+    
+    \begin{equation}
+        Cov(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) = \sum_{j=1}^{n} p_{ji} p_{jl} = 0
+    \end{equation}
+    
+    协方差为0的两个正态分布，相互独立. 独立性得证. 
+    
     最后，来看看上面这个卡方分布的自由度 $ m $ ，到底是多少. 上面已经说过，是对角矩阵 $ \boldsymbol{\varLambda} $ 的对角元素要么是1，要么是0， $ m $  是1的个数，也就是说，$ m $ 也是对角矩阵 $ \boldsymbol{\varLambda} $ 的迹，所以
     
     \begin{equation}
@@ -339,7 +353,7 @@
 
     上式中的 $ k $ 就是回归模型中回归变量的个数. 推导过程中使用到了矩阵迹的性质。
     
-    到此，我们已经基本完整地证明了回归平方和 $ \frac{1}{\sigma^2} SSR $ 服从自由度为 $ k $ 的卡方分布，用数学表达式表示为
+    到此，我们已经基本完整地证明了 $ \frac{1}{\sigma^2} SSR $ 服从自由度为 $ k $ 的卡方分布，用数学表达式表示为
     
     \begin{equation}
     	\frac{1}{\sigma^2} SSR \sim \mathcal{\chi}^2(k)
