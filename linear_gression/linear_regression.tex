@@ -311,14 +311,14 @@
     \begin{equation}
     	\begin{aligned}
     	    Cov(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) & = \frac{1}{\sigma^2} Cov(\sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) \\
-    	    & = \sum_{j=1}^{n} \sum_{h=1}^{n} Cov(p_{ji} \epsilon_{j}, p_{hl} \epsilon_{h}) \\
-    	    & = \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} Cov(\epsilon_{j}, \epsilon_{h}) \\
-    	    & = \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} \cdot 0 \\
+    	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} Cov(p_{ji} \epsilon_{j}, p_{hl} \epsilon_{h}) \\
+    	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} Cov(\epsilon_{j}, \epsilon_{h}) \\
+    	    & = \frac{1}{\sigma^2} \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} \cdot 0 \\
     	    & = 0
     	\end{aligned}
     \end{equation}
 
-    上式中，因为 $ \epsilon_i $ 之间相互独立，所以 $ Cov(\epsilon_i, \epsilon_j) = 0 $ . 协方差为0的正态分布，是相互独立的，独立性得证. 
+    上式中，因为 $ \epsilon_i $ 之间相互独立，所以 $ Cov(\epsilon_i, \epsilon_j) = 0 $ . 协方差为0的正态分布，相互独立. 独立性得证. 
 
     最后，来看看上面这个卡方分布的自由度 $ m $ ，到底是多少. 上面已经说过，是对角矩阵 $ \boldsymbol{\varLambda} $ 的对角元素要么是1，要么是0， $ m $  是1的个数，也就是说，$ m $ 也是对角矩阵 $ \boldsymbol{\varLambda} $ 的迹，所以
     
