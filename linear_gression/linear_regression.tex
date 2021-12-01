@@ -299,11 +299,50 @@
         	& \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} \sim \mathcal{N}(0, \sigma^2) \\
         	\Downarrow & \\
         	& \frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} \sim \mathcal{N}(0, 1) \\
-        	\Downarrow & \\
+        	\Downarrow & \\ 
         	& \sum_{i=1}^{m}{(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}})^2} \sim \mathcal{\chi}^2(m) \\
         	\Downarrow & \\
         	& \frac{1}{\sigma^2} SSR \sim \mathcal{\chi}^2(m)
         \end{aligned}
+    \end{equation}
+
+    上面倒数第二个推导 $ (\Downarrow) $ 需要证明 $ \frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}} $ 和 $ \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}} $ 之间的独立性，如下
+    
+    \begin{equation}
+    	\begin{aligned}
+    	    Cov(\frac{1}{\sigma} \sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \frac{1}{\sigma} \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) & = \frac{1}{\sigma^2} Cov(\sum_{j=1}^{n}{p_{ji} \epsilon_{j}}, \sum_{j=1}^{n}{p_{jl} \epsilon_{j}}) \\
+    	    & = \sum_{j=1}^{n} \sum_{h=1}^{n} Cov(p_{ji} \epsilon_{j}, p_{hl} \epsilon_{h}) \\
+    	    & = \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} Cov(\epsilon_{j}, \epsilon_{h}) \\
+    	    & = \sum_{j=1}^{n} \sum_{h=1}^{n} p_{ji} p_{hl} \cdot 0 \\
+    	    & = 0
+    	\end{aligned}
+    \end{equation}
+
+    上式中，因为 $ \epsilon_i $ 之间相互独立，所以 $ Cov(\epsilon_i, \epsilon_j) = 0 $ . 协方差为0的正态分布，是相互独立的，独立性得证. 
+
+    最后，来看看上面这个卡方分布的自由度 $ m $ ，到底是多少. 上面已经说过，是对角矩阵 $ \boldsymbol{\varLambda} $ 的对角元素要么是1，要么是0， $ m $  是1的个数，也就是说，$ m $ 也是对角矩阵 $ \boldsymbol{\varLambda} $ 的迹，所以
+    
+    \begin{equation}
+        \begin{aligned}
+            m & = trace(\boldsymbol{\varLambda}) \\
+            & = trace(\boldsymbol{P}^T \boldsymbol{Q} \boldsymbol{P}) \\
+            & = trace(\boldsymbol{P} \boldsymbol{P}^T \boldsymbol{Q}) \\
+            & = trace(\boldsymbol{Q}) \\
+            & = trace[\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T - \boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \\
+            & = trace[\boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1} \boldsymbol{X}^T] - trace[\boldsymbol{1}  (\boldsymbol{1}^T \boldsymbol{1})^{-1} \boldsymbol{1}^T] \\
+            & = trace[\boldsymbol{X}^T \boldsymbol{X} (\boldsymbol{X}^T \boldsymbol{X})^{-1}] - trace[\boldsymbol{1}^T \boldsymbol{1} (\boldsymbol{1}^T \boldsymbol{1})^{-1}] \\
+            & = trace(\boldsymbol{I}_{k + 1}) - trace(\boldsymbol{I}_1) \\
+            & = k + 1 - 1 \\
+            & = k
+        \end{aligned}
+    \end{equation}
+
+    上式中的 $ k $ 就是回归模型中回归变量的个数. 推导过程中使用到了矩阵迹的性质。
+    
+    到此，我们已经基本完整地证明了回归平方和 $ \frac{1}{\sigma^2} SSR $ 服从自由度为 $ k $ 的卡方分布，用数学表达式表示为
+    
+    \begin{equation}
+    	\frac{1}{\sigma^2} SSR \sim \mathcal{\chi}^2(k)
     \end{equation}
 
 
@@ -320,6 +359,18 @@
     实对称矩阵 $ \boldsymbol{A} \in \mathbb{R}^{n \times n} $ 必定正交相似于实对角矩阵 $ \boldsymbol{\varLambda} $ ，即存在正交矩阵 $ \boldsymbol{P} $ ，使得 $ \boldsymbol{P}^{-1} \boldsymbol{A} \boldsymbol{P} = \boldsymbol{P}^T \boldsymbol{A} \boldsymbol{P} = \boldsymbol{\varLambda} $ ，其中 $ \boldsymbol{\varLambda} $ 对角线上的元素是 $ \boldsymbol{A} $ 的 $ n $ 个特征值.
     
     证明可请参考线性代数的教材.
+    
+    定理二
+    
+    矩阵迹的运算有如下性质：
+    
+    \begin{equation}\
+    	\begin{aligned}
+    	    & trace(\boldsymbol{A} \boldsymbol{B}) = trace(\boldsymbol{B} \boldsymbol{A}) \\
+    	    & trace(\boldsymbol{A} + \boldsymbol{B}) = trace(\boldsymbol{A}) + trace(\boldsymbol{B}) \\
+    	    & trace(c \boldsymbol{A}) = c \cdot trace(\boldsymbol{A})
+    	\end{aligned}
+    \end{equation}
     
 	
 	
